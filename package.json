@@ -12,5 +12,13 @@
   "license": "Apache-2.0",
   "dependencies": {
     "bin-wrapper": "^3.0.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/turnerlabs/harbor-compose-wrapper.git"
+  },
+  "homepage": "https://github.com/turnerlabs/harbor-compose-wrapper#readme",
+  "bugs": {
+    "url": "https://github.com/turnerlabs/harbor-compose-wrapper/issues"
+  }  
 }

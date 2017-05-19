@@ -14,7 +14,7 @@ npm install --save-dev harbor-compose-wrapper
 ```json
 "scripts": {
   "devDependencies": {
-    "harbor-compose-wrapper": "0.10.1"
+    "harbor-compose-wrapper": "0.11.0"
   },  
   "harbor-deploy": "harbor-compose up",
   "harbor-ps": "harbor-compose ps",
@@ -28,7 +28,7 @@ or use with `jq`...
 "scripts": {
   "devDependencies": {
     "jq-cli-wrapper": "*",
-    "harbor-compose-wrapper": "0.10.1"
+    "harbor-compose-wrapper": "0.11.0"
   },  
   "docker-build": "VERSION=$(jq -r .version package.json) docker-compose build",
   "docker-push": "VERSION=$(jq -r .version package.json) docker-compose push",
