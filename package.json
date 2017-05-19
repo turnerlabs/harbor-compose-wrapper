@@ -1,0 +1,16 @@
+{
+  "name": "harbor-compose-wrapper",
+  "version": "0.10.1",
+  "description": "An npm wrapper around the harbor-compose cli",
+  "bin": {
+    "harbor-compose": "index.js"
+  },
+  "keywords": [
+    "harbor-compose", "harbor", "docker-compose"
+  ],
+  "author": "john.ritsema@turner.com",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "bin-wrapper": "^3.0.2"
+  }
+}
