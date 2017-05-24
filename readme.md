@@ -9,32 +9,50 @@ An npm wrapper around the [harbor-compose](https://github.com/turnerlabs/harbor-
 npm install --save-dev harbor-compose-wrapper
 ```
 
-### usage example (`package.json`)
+### usage examples (`package.json`)
 
 ```json
 "scripts": {
   "devDependencies": {
     "harbor-compose-wrapper": "0.11.0"
   },  
-  "harbor-deploy": "harbor-compose up",
   "harbor-ps": "harbor-compose ps",
-  "harbor-logs": "harbor-compose logs"
+  "harbor-logs": "harbor-compose logs",
+  "harbor-up": "harbor-compose up"
 }
 ```
 
-or use with `jq`...
+or use with more automation...
 
 ```json
+"version": "1.0.0",
 "scripts": {
-  "devDependencies": {
+  "devDependencies": {    
+    "harbor-compose-wrapper": "0.11.0",
     "jq-cli-wrapper": "*",
-    "harbor-compose-wrapper": "0.11.0"
+    "randomstring": "^1.1.5"
   },  
-  "docker-build": "VERSION=$(jq -r .version package.json) docker-compose build",
-  "docker-push": "VERSION=$(jq -r .version package.json) docker-compose push",
-  "harbor-up": "VERSION=$(jq -r .version package.json) harbor-compose up",
-  "harbor-deploy": "npm run docker-build && npm run docker-push && npm run harbor-up",
-  "harbor-ps": "harbor-compose ps",
-  "harbor-logs": "harbor-compose logs"
+  "unique-version": "echo VERSION=$(jq -r .version package.json)-$(randomstring) > .env",
+  "docker-build": "npm run unique-version && docker-compose build",
+  "harbor-deploy": "npm run docker-build && docker-compose push && harbor-compose up && harbor-compose ps"
 }
+```
+
+```yaml
+version: '2'
+services:
+  app:
+    build: .
+    image: quay.io/turner/app:${VERSION}
+    ports:
+      - "80:5000"
+    environment:
+      PORT: 5000
+      HEALTHCHECK: /health
+```
+
+...allows you to change code and redeploy a unique image based on your package.json version (e.g., `quay.io/turner/app:1.0.0-XwPp9xazJ0ku5CZnlmgAx2Dld8SHkAeT`), by running:
+
+```
+npm run harbor-deploy
 ```
