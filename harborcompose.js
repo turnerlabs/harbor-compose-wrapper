@@ -12,6 +12,6 @@ if (process.platform === 'win32') binary += '.exe';
 var bin = new BinWrapper({ skipCheck: true })
   .src(util.format('%s/v%s/%s', base, version, binary))
   .use(binary)
-  .dest(path.join('vendor'));
+  .dest(path.join('node_modules/.bin'));
 
 module.exports = bin;
