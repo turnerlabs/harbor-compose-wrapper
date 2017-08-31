@@ -14,7 +14,7 @@ npm install --save-dev harbor-compose-wrapper
 ```json
 "scripts": {
   "devDependencies": {
-    "harbor-compose-wrapper": "0.13.0"
+    "harbor-compose-wrapper": "0.13.1"
   },  
   "harbor-ps": "harbor-compose ps",
   "harbor-logs": "harbor-compose logs",
@@ -28,7 +28,7 @@ or use with more automation...
 "version": "1.0.0",
 "scripts": {
   "devDependencies": {    
-    "harbor-compose-wrapper": "0.13.0",
+    "harbor-compose-wrapper": "0.13.1",
     "jq-cli-wrapper": "*",
     "randomstring": "^1.1.5"
   },  
